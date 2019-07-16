@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+    <h1>Bienvenue</h1>
+
+    {% for i in 1..10 %}
+        <a href="{{ path('article_show', {'slug': i}) }}">
+            Article
+            {{ i }}            
+        </a>
+        <br>
+    {% endfor %}
+{% endblock %}

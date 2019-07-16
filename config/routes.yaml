@@ -1,0 +1,7 @@
+# index:
+#     path: /
+#     controller: App\Controller\DefaultController::index
+# article:
+#     path: /article/{slug}
+#     controller: App\Controller\DefaultController::show
+#     defaults: { slug: "toto"}

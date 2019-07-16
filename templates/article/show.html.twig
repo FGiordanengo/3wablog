@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Article : {{ title }}
+{% endblock %}
+{% block body %}
+
+    <a href="{{ path('home') }}">Accueil</a>
+
+    <h1>{{ title }} </h1>
+
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam, reprehenderit maiores dignissimos minus numquam ullam deleniti facilis voluptatum pariatur ratione.</p>
+    <p>Harum numquam dolores consequuntur? Soluta laboriosam aspernatur deserunt, in facilis vitae enim animi, consequuntur fugit voluptas blanditiis quisquam deleniti amet.</p>    
+
+    <h2>Commentaires ({{comments | length}})</h2>
+
+    <ul>
+        {% for comment in comments %}
+            <li>{{ comment | upper}}</li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
+ 
