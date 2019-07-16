@@ -21,7 +21,7 @@ class DefaultController extends AbstractController
     }
 
     /**
-     * @Route("/article/{slug}", name="article_show")
+     * @Route("/news/{slug}", name="article_show")
      */
     public function show($slug = "toto") //defaults={"slug": "toto"}
     {
