@@ -9,14 +9,22 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Routing\Matcher\UrlMatcherInterface;
 use Symfony\Component\Routing\RouterInterface;
+use App\Repository\ArticleRepository;
 
 class DefaultController extends AbstractController
 {
     /**
      * @Route("/", name="home")
      */
-    public function index()
+    public function index(ArticleRepository $repo)
     {
+        $articles = $repo->findBy(['title' => "Un titre"], ["createdAt" => "Desc"]);
+
+        $article = $repo->find(42);
+
+        dump($articles);
+        dump($article);
+
         return $this->render("article/home.html.twig");
     }
 

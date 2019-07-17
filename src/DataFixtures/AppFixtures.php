@@ -10,7 +10,7 @@ class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-        $faker = \Faker\Factory::create('fr_FR');
+        $faker = Factory::create('fr_FR');
         for ($a = 0; $a < 40; $a++) {
             $article = new Article();
             $article->setTitle($faker->catchPhrase)
