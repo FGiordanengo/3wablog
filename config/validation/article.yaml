@@ -1,0 +1,8 @@
+App\Entity\Article:
+  properties:
+    title:
+      - NotBlank: {message: "Le titre est obligatoire"}
+      - Length: {min: 3, minMessage: "Le titre doit faire plus de 3 caractères"}
+    image:
+      - NotBlank: {message: "L'image est obligatoire"}
+      - Url: {message: "L'URL doit être valide !"}

@@ -1,24 +1,37 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    Article : {{ title }}
+    Article : {{ article.title }}
 {% endblock %}
+
 {% block body %}
+    <h1>{{ article.title }}</h1>
 
-    <a href="{{ path('home') }}">Accueil</a>
+    {{ articleContent | raw }}
 
-    <h1>{{ title }} </h1>
-
-    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam, reprehenderit maiores dignissimos minus numquam ullam deleniti facilis voluptatum pariatur ratione.</p>
-    <p>Harum numquam dolores consequuntur? Soluta laboriosam aspernatur deserunt, in facilis vitae enim animi, consequuntur fugit voluptas blanditiis quisquam deleniti amet.</p>    
-
-    <h2>Commentaires ({{comments | length}})</h2>
+    <h2 class="mt-5">Commentaires ({{ article.comments | length }})</h2>
 
     <ul>
-        {% for comment in comments %}
-            <li>{{ comment | upper}}</li>
+        {% for comment in article.comments %}
+            <strong>{{ comment.authorName }} a dit :</strong><br>
+            <small>Le {{ comment.createdAt | date('d/m/Y H:i') }}</small>
+            <blockquote>
+                <em>{{ comment.content }}</em>
+            </blockquote>
         {% endfor %}
     </ul>
+    <div class="alert alert-light">
+    {% if is_granted("ROLE_USER") %}
+    
+    <h2 class="mt-5">Ajouter un commentaire</h2>
+
+    {{ include('comment/comment-form.html.twig') }}
+    {% else %}
+        <h2 class="alert-title">Connectez-vous pour pouvoir commenter</h2>
+         <a href="{{ path('security_login') }}" class="btn btn-primary text-white">Connectez-vous</a> /
+         <a href="{{ path('account_register') }}">Inscrivez-vous</a>
+    {% endif %}
+    </div>
+
 
 {% endblock %}
- 

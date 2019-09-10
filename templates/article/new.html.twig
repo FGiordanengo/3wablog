@@ -1,0 +1,20 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Créer un article
+{% endblock %}
+
+{% block body %}
+    <h1>Créer un article</h1>
+
+    <div class="alert alert-info">
+        <p>Utilisez le formulaire ci-dessous pour créer le plus beau des articles !</p>
+    </div>
+{{ form_start(articleForm, {'attr': {'novalidate': 'novalidate'}}) }}
+
+{{ form_widget(articleForm) }}
+
+{{ form_end(articleForm) }}
+
+
+
+{% endblock %}

@@ -2,10 +2,10 @@
 
 namespace App\Service;
 
-class Calculator
-{
-    public function getTotal($totalHT, $taux = 20)
-    {
-        return $totalHT + ($totalHT * $taux / 100);
+class Calculator {
+
+    public function getTotal($totalHt, $taux = 20) {
+        return $totalHt + ($totalHt * $taux / 100);
     }
+
 }

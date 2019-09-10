@@ -19,6 +19,31 @@ class ArticleRepository extends ServiceEntityRepository
         parent::__construct($registry, Article::class);
     }
 
+    /**
+     * Retourne les articles publiés classés par date de publication descendante
+     *
+     * @return Article[]
+     */
+    public function findPublishedArticles() {
+
+        return $this->createQueryBuilder('a')
+            ->select('a', 'c')
+            ->leftJoin('a.comments', 'c')
+            ->andWhere('a.publishedAt IS NOT NULL')
+            ->orderBy('a.publishedAt', 'DESC')
+            ->getQuery()
+            ->getResult();
+
+//        return $this->getEntityManager()
+//                ->createQuery(/** @lang DQL */
+//                "
+//                    SELECT a
+//                    FROM App\Entity\Article AS a
+//                    WHERE a.publishedAt IS NOT NULL
+//                    ORDER BY a.publishedAt DESC
+//                ")->getResult();
+    }
+
     // /**
     //  * @return Article[] Returns an array of Article objects
     //  */
